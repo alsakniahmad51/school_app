@@ -3,29 +3,29 @@ import 'package:school_app/core/functions/navigation.dart';
 import 'package:school_app/features/course/presentation/pages/course_details_page.dart';
 
 class SubjectListItem extends StatelessWidget {
-  final String title;
+  final String courseTitle;
   final String subtitle;
 
   const SubjectListItem({
     super.key,
-    required this.title,
+    required this.courseTitle,
     this.subtitle = 'عرض المادة',
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 372,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFE0E0E0)),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          context.navigationWithFade(CourseDetailsPage());
-        },
+    return GestureDetector(
+      onTap: () {
+        context.navigationWithFade(CourseDetailsPage(courseTitle: courseTitle));
+      },
+      child: Container(
+        width: 372,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: const Color(0xFFE0E0E0)),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -56,7 +56,7 @@ class SubjectListItem extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      title,
+                      courseTitle,
                       textDirection: TextDirection.rtl,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(

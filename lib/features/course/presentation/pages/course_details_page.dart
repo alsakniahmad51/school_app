@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'course_attachments_page.dart';
-import 'course_news_page.dart';
+import 'course_test_page.dart';
 import '../widgets/course_details_header.dart';
 import '../widgets/course_tab_switcher.dart';
 
 class CourseDetailsPage extends StatefulWidget {
-  const CourseDetailsPage({super.key});
-
+  const CourseDetailsPage({super.key, required this.courseTitle});
+  final String courseTitle;
   @override
   State<CourseDetailsPage> createState() => _CourseDetailsPageState();
 }
@@ -33,7 +33,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
-                    const CourseDetailsHeader(),
+                    CourseDetailsHeader(courseTitle: widget.courseTitle),
                     const SizedBox(height: 18),
                     CourseTabSwitcher(
                       showAttachments: showAttachments,
@@ -44,7 +44,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                     Expanded(
                       child: showAttachments
                           ? const CourseAttachmentsPage()
-                          : const CourseNewsPage(),
+                          : const CourseTestsPage(),
                     ),
                   ],
                 ),

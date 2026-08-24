@@ -7,7 +7,9 @@ void main() {
   testWidgets('course details tab switches between files and news', (
     tester,
   ) async {
-    await tester.pumpWidget(const MaterialApp(home: CourseDetailsPage()));
+    await tester.pumpWidget(
+      const MaterialApp(home: CourseDetailsPage(courseTitle: 'الفقه')),
+    );
 
     expect(find.text('الفقة والشريعة'), findsOneWidget);
     expect(find.text('الملفات المرفقة'), findsOneWidget);

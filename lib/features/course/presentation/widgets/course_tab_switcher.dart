@@ -24,33 +24,6 @@ class CourseTabSwitcher extends StatelessWidget {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () => onTabChanged(false),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeInOut,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: !showAttachments
-                      ? const Color(0xFF007353)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  'الإعلانات',
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: !showAttachments
-                        ? Colors.white
-                        : const Color(0xFF000F0B),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
               onTap: () => onTabChanged(true),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
@@ -69,6 +42,33 @@ class CourseTabSwitcher extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: showAttachments
+                        ? Colors.white
+                        : const Color(0xFF000F0B),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () => onTabChanged(false),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeInOut,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: !showAttachments
+                      ? const Color(0xFF007353)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  'الاختبارات',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: !showAttachments
                         ? Colors.white
                         : const Color(0xFF000F0B),
                   ),
