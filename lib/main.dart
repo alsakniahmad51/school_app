@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/home/presentation/pages/home_page.dart';
+import 'features/splash/presentation/splash_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class SchoolApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff007353)),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const SplashPage(),
     );
   }
 }
