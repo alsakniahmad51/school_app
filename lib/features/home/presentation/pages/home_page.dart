@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/home_header.dart';
-import '../widgets/home_status_bar.dart';
 import '../widgets/semester_switcher.dart';
 import '../widgets/subject_list_item.dart';
 import '../widgets/summary_card.dart';
