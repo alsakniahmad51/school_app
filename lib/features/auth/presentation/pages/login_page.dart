@@ -1,4 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_app/core/api/dio_consumer.dart';
+import 'package:school_app/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:school_app/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:school_app/features/auth/domain/usecases/login_use_case.dart';
+import 'package:school_app/features/auth/presentation/auth_cubit/login_cubit.dart';
 
 import '../widgets/auth_header.dart';
 import '../widgets/login_form.dart';
@@ -28,7 +35,16 @@ class LoginPage extends StatelessWidget {
 
                       AuthHeader(),
                       SizedBox(height: 18),
-                      LoginForm(),
+                      BlocProvider(
+                        create: (context) => LoginCubit(
+                          LoginUseCase(
+                            AuthRepositoryImpl(
+                              AuthRemoteDataSourceImpl(DioConsumer(dio: Dio())),
+                            ),
+                          ),
+                        ),
+                        child: LoginForm(),
+                      ),
                     ],
                   ),
                 ),
@@ -41,6 +57,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _StatusIcon extends StatelessWidget {
   final Color color;
   final double width;

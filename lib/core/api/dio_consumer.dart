@@ -6,7 +6,7 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options = BaseOptions(
-      baseUrl: "https://unclasp-joyfully-confront.ngrok-free.dev",
+      baseUrl: "https://unclasp-joyfully-confront.ngrok-free.dev/",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),
