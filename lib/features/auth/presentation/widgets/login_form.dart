@@ -6,8 +6,6 @@ import 'package:school_app/features/auth/presentation/widgets/email_field.dart';
 import 'package:school_app/features/auth/presentation/widgets/password_field.dart';
 import 'package:school_app/features/home/presentation/pages/home_page.dart';
 
-import '../cubit/auth_cubit.dart';
-import '../cubit/auth_state.dart';
 import 'primary_button.dart';
 
 class LoginForm extends StatefulWidget {
@@ -41,77 +39,58 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {
-        if (state is AuthSuccess) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('مرحباً ${state.user.name}')));
-        }
-
-        if (state is AuthFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.message)));
-        }
-      },
-      builder: (context, state) {
-        final isLoading = state is AuthLoading;
-
-        return Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Row(
-                  children: [
-                    Text(
-                      "البريد الإلكتروني / اسم المستخدم ",
-                      style: TextStyle(
-                        color: Color(0xFF111827),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    RequiredText(),
-                  ],
+    return Form(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: Row(
+              children: [
+                Text(
+                  "البريد الإلكتروني / اسم المستخدم ",
+                  style: TextStyle(
+                    color: Color(0xFF111827),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              EmailField(emailController: _emailController),
-
-              const Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Row(
-                  children: [
-                    Text(
-                      'كلمة المرور ',
-                      style: TextStyle(
-                        color: Color(0xFF111827),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    RequiredText(),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              PasswordField(passwordController: _passwordController),
-              const SizedBox(height: 12),
-
-              PrimaryButton(
-                text: 'تسجيل الدخول',
-                isLoading: isLoading,
-                onPressed: _submit,
-              ),
-            ],
+                RequiredText(),
+              ],
+            ),
           ),
-        );
-      },
+          const SizedBox(height: 8),
+          EmailField(emailController: _emailController),
+
+          const Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: Row(
+              children: [
+                Text(
+                  'كلمة المرور ',
+                  style: TextStyle(
+                    color: Color(0xFF111827),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                RequiredText(),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          PasswordField(passwordController: _passwordController),
+          const SizedBox(height: 12),
+
+          PrimaryButton(
+            text: 'تسجيل الدخول',
+            isLoading: false,
+            onPressed: _submit,
+          ),
+        ],
+      ),
     );
   }
 }

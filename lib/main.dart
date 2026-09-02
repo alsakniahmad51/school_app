@@ -16,6 +16,7 @@ class SchoolApp extends StatelessWidget {
       title: 'School App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Montserrat-Arabic',
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff007353)),
         useMaterial3: true,
       ),
